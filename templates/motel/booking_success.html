@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Booking Successful{% endblock %}
+{% block content %}
+<div class="bg-gray-50 py-16 flex-grow flex items-center justify-center">
+    <div class="max-w-xl w-full mx-auto px-4 text-center">
+        <div class="bg-white p-10 rounded-3xl shadow-lg border border-gray-100">
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-green-100 mb-6">
+                <svg class="h-10 w-10 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-4">Payment Successful!</h1>
+            <p class="text-lg text-gray-600 mb-8">Your room has been booked. You will receive a confirmation email shortly.</p>
+            <a href="{% url 'home' %}" class="inline-block bg-primary hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full transition shadow-md">Return Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}Explore Hope, BC - Slumber Lodge{% endblock %}
+
+{% block content %}
+<div class="bg-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h1 class="text-4xl font-extrabold text-gray-900">Explore Hope, BC</h1>
+            <p class="mt-4 text-xl text-gray-500">Discover the nature and attractions near Slumber Lodge.</p>
+        </div>
+
+        <div class="flex flex-col gap-12">
+            {% for attraction in attractions %}
+            <div class="flex flex-col md:flex-row bg-gray-50 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition">
+                <div class="md:w-1/3 h-64 md:h-auto bg-gray-200 relative">
+                    {% if attraction.image %}
+                        <img src="{{ attraction.image.url }}" alt="{{ attraction.name }}" class="w-full h-full object-cover">
+                    {% else %}
+                        <div class="w-full h-full flex items-center justify-center text-gray-400">
+                            <span class="text-sm">Image Coming Soon</span>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="p-8 md:w-2/3 flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">{{ attraction.name }}</h2>
+                    <p class="text-gray-700 text-lg mb-6">{{ attraction.description }}</p>
+                    {% if attraction.distance_notes %}
+                        <div class="inline-flex items-center text-sm font-medium text-primary bg-blue-50 px-3 py-1.5 rounded-full mt-auto self-start">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            {{ attraction.distance_notes }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="text-center py-12 text-gray-500 bg-gray-50 rounded-xl shadow-sm border border-dashed border-gray-300">
+                <p class="text-lg">Attractions are being updated. Check back soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

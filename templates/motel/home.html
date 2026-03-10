@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<div class="relative bg-gray-900 h-96">
+    {% if motel.hero_image %}
+        <img src="{{ motel.hero_image.url }}" alt="Slumber Lodge Default" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay">
+    {% else %}
+        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-blue-900 to-primary"></div>
+    {% endif %}
+    
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-4 drop-shadow-lg">
+            {{ motel.name|default:"Slumber Lodge Motel" }}
+        </h1>
+        <p class="text-xl md:text-2xl text-gray-200 max-w-2xl drop-shadow-md">
+            {{ motel.welcome_message|default:"Comfort and convenience in the heart of Hope, BC." }}
+        </p>
+        <div class="mt-8 flex gap-4">
+            <a href="{% url 'book' %}" class="bg-secondary hover:bg-yellow-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105">
+                Book Now
+            </a>
+            <a href="{% url 'rooms' %}" class="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/50 text-white font-bold py-3 px-8 rounded-full shadow-lg transform transition hover:scale-105">
+                View Rooms
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Facilities Section -->
+<div class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900">Our Facilities</h2>
+            <p class="mt-4 text-lg text-gray-500">Everything you need for a relaxing stay.</p>
+        </div>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {% for facility in facilities %}
+            <div class="flex flex-col items-center p-6 bg-gray-50 rounded-xl shadow-sm hover:shadow-md transition">
+                <!-- Using generic icons for prototype -->
+                <div class="text-primary mb-4 p-3 bg-blue-100 rounded-full">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-lg font-medium text-gray-900">{{ facility.name }}</h3>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center text-gray-500 py-8">
+                Facilities will be added soon.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

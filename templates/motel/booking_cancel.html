@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %}Booking Cancelled{% endblock %}
+{% block content %}
+<div class="bg-gray-50 py-16 flex-grow flex items-center justify-center">
+    <div class="max-w-xl w-full mx-auto px-4 text-center">
+        <div class="bg-white p-10 rounded-3xl shadow-lg border border-gray-100">
+            <div class="mx-auto flex items-center justify-center h-20 w-20 rounded-full bg-red-100 mb-6">
+                <svg class="h-10 w-10 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </div>
+            <h1 class="text-3xl font-extrabold text-gray-900 mb-4">Booking Cancelled</h1>
+            <p class="text-lg text-gray-600 mb-8">You have cancelled the checkout process. No charges were made.</p>
+            <a href="{% url 'book' %}" class="inline-block bg-primary hover:bg-blue-800 text-white font-bold py-3 px-8 rounded-full transition shadow-md">Try Again</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
