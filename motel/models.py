@@ -81,3 +81,22 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"{self.customer_name} - {self.room.room_number} ({self.check_in} to {self.check_out})"
+
+class SiteSettings(models.Model):
+    logo = models.ImageField(upload_to="site_images/", null=True, blank=True)
+
+    class Meta:
+        verbose_name = "Site Settings"
+        verbose_name_plural = "Site Settings"
+
+    def save(self, *args, **kwargs):
+        self.pk = 1
+        super().save(*args, **kwargs)
+
+    @classmethod
+    def get_solo(cls):
+        obj, created = cls.objects.get_or_create(pk=1)
+        return obj
+
+    def __str__(self):
+        return "Site Settings"
