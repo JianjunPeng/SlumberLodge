@@ -56,7 +56,9 @@
                 <!-- Right side: Auth / Admin -->
                 <div class="hidden md:flex items-center space-x-6">
                     {% if user.is_authenticated %}
-                    <span class="text-xl text-gray-500">Hello, {{ user.username }}</span>
+                    <span class="text-xl text-gray-500">
+                        Hello, {% if user.first_name %}{{ user.first_name }}{% else %}{{ user.username }}{% endif %}
+                    </span>
                     {% if user.is_staff %}
                     <a href="/admin/" class="text-xl font-medium text-gray-600 hover:text-primary">Admin Panel</a>
                     {% endif %}
