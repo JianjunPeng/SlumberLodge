@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'accounts',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -150,3 +151,5 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_WEBHOOK_SECRET = env('STRIPE_WEBHOOK_SECRET')
+
+LOGIN_REDIRECT_URL = '/accounts/profile/'
