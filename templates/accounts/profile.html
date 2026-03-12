@@ -15,7 +15,13 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1" for="{{ form.first_name.id_for_label }}">
                         First name
                     </label>
-                    {{ form.first_name }}
+                    <input
+                        type="text"
+                        name="{{ form.first_name.html_name }}"
+                        id="{{ form.first_name.id_for_label }}"
+                        value="{{ form.first_name.value|default_if_none:'' }}"
+                        class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                    />
                     {% if form.first_name.errors %}
                     <p class="mt-1 text-sm text-red-600">{{ form.first_name.errors.0 }}</p>
                     {% endif %}
@@ -25,7 +31,13 @@
                     <label class="block text-sm font-medium text-gray-700 mb-1" for="{{ form.last_name.id_for_label }}">
                         Last name
                     </label>
-                    {{ form.last_name }}
+                    <input
+                        type="text"
+                        name="{{ form.last_name.html_name }}"
+                        id="{{ form.last_name.id_for_label }}"
+                        value="{{ form.last_name.value|default_if_none:'' }}"
+                        class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                    />
                     {% if form.last_name.errors %}
                     <p class="mt-1 text-sm text-red-600">{{ form.last_name.errors.0 }}</p>
                     {% endif %}
@@ -36,7 +48,13 @@
                 <label class="block text-sm font-medium text-gray-700 mb-1" for="{{ form.phone_number.id_for_label }}">
                     Phone number
                 </label>
-                {{ form.phone_number }}
+                <input
+                    type="text"
+                    name="{{ form.phone_number.html_name }}"
+                    id="{{ form.phone_number.id_for_label }}"
+                    value="{{ form.phone_number.value|default_if_none:'' }}"
+                    class="mt-1 block w-full border border-gray-400 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-primary focus:border-primary sm:text-sm"
+                />
                 {% if form.phone_number.errors %}
                 <p class="mt-1 text-sm text-red-600">{{ form.phone_number.errors.0 }}</p>
                 {% endif %}
